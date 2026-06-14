@@ -1,0 +1,21 @@
+node_modules/
+.cursor/
+.env
+
+# Cypress artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/fixtures/registeredUser.json
+
+# Reports
+cypress/reports/
+mochawesome-report/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
