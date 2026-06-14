@@ -7,11 +7,19 @@
     "cy:run": "cypress run",
     "cy:run:headed": "cypress run --headed",
     "cy:run:chrome": "cypress run --browser chrome",
-    "test": "cypress run"
+    "test": "cypress run",
+    "cy:worker1": "cross-env WORKER_ID=1 npx cypress run --spec \"cypress/e2e/01_*.cy.js,cypress/e2e/02_*.cy.js, cypress/e2e/03_*.cy.js, cypress/e2e/04_*.cy.js\"",
+    "cy:worker2": "cross-env WORKER_ID=2 npx cypress run --spec \"cypress/e2e/05_*.cy.js,cypress/e2e/06_*.cy.js,cypress/e2e/07_*.cy.js,cypress/e2e/08_*.cy.js\"",
+    "cy:parallel-local": "concurrently \"npm:cy:worker1\" \"npm:cy:worker2\""
   },
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
     "cypress": "^13.17.0",
     "dotenv": "^16.5.0"
+  },
+  "fixtures": {
+    "registeredUser": "./cypress/fixtures/registeredUser.json"
   }
 }
