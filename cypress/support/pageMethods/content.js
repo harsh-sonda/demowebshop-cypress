@@ -16,7 +16,7 @@ class ContentPage {
       this.navigationPage.openFooterLink(link.name);
 
       cy.url().should('match', new RegExp(`${link.path}$`));
-      cy.contains('h1', link.heading).should('be.visible');
+      cy.contains('h1', link.heading, { matchCase: false }).should('be.visible');
     });
   }
 

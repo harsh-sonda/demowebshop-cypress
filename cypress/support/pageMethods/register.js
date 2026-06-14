@@ -85,7 +85,7 @@ class RegisterPage {
     this.registerButton.click();
 
     this.successMessage.should('be.visible');
-    cy.url().should('include', 'registerresult').then(() => {
+    return cy.url().should('include', 'registerresult').then(() => {
       return cy.wrap({
         email: userEmail,
         password: userPassword,

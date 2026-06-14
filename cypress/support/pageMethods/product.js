@@ -147,7 +147,7 @@ class ProductPage {
   }
 
   submitReviewButton() {
-    cy.contains('button', 'Submit review').click();
+    cy.get("input.write-product-review-button[value='Submit review']").click();
   }
 
   fillGiftCardFieldsIfPresent() {

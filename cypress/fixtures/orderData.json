@@ -1,7 +1,7 @@
 {
   "product": {
-    "categoryName": "Books",
-    "name": "Computing and Internet"
+    "categoryName": "Apparel & Shoes",
+    "name": "Blue Jeans"
   },
   "billingAddress": {
     "firstName": "Test",

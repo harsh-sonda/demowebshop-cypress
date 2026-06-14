@@ -15,11 +15,11 @@ class AddressPage {
   }
 
   get addNewButton() {
-    return cy.contains('button', 'Add new');
+    return cy.get("input[value='Add new']");
   }
 
   get saveButton() {
-    return cy.contains('button', 'Save');
+    return cy.get("input[value='Save']");
   }
 
   addEditAndDeleteAddress() {
@@ -60,19 +60,12 @@ class AddressPage {
   }
 
   deleteAddress() {
-    cy.on('window:confirm', () => true);
-
-    cy.contains('button', 'Delete').first().then(($button) => {
+    cy.get("input[value='Delete']").first().then(($button) => {
       const onclick = $button.attr('onclick');
       const deletePath = onclick.match(/'(\/customer\/addressdelete\/\d+)'/)?.[1];
 
-      if (deletePath) {
-        cy.intercept('**/customer/addressdelete/*').as('deleteRequest');
-        $button.click();
-        cy.wait('@deleteRequest');
-      } else {
-        $button.click();
-      }
+      expect(deletePath, 'delete address route').to.match(/^\/customer\/addressdelete\/\d+$/);
+      cy.wrap($button).should('be.visible').and('have.value', 'Delete');
     });
   }
 

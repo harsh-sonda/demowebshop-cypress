@@ -35,7 +35,7 @@ class CatalogPage {
       cy.get('input.product-box-add-to-cart-button').click();
     });
 
-    this.cartQuantity.should('match', /[1-9]/);
+    this.cartQuantity.invoke('text').should('match', /\([1-9]\d*\)/);
   }
 
   verifyCategoryNavigation(category) {

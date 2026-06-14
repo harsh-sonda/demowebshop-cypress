@@ -5,7 +5,7 @@ const path = require('path');
 
 dotenv.config();
 
-const baseUrl = process.env.BASE_URL || 'https://demowebshop.tricentis.com';
+const baseUrl = process.env.BASE_URL;
 
 module.exports = defineConfig({
   e2e: {
@@ -18,7 +18,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000,
     requestTimeout: 10000,
     retries: {
-      runMode: 2,
+      runMode: 1,
       openMode: 0
     },
     video: true,

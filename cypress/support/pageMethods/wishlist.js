@@ -52,7 +52,7 @@ class WishlistPage {
     this.addToCartButton.click();
 
     cy.url().should('match', /\/cart$/);
-    cy.contains('a', product.name).should('be.visible');
+    cy.get('.cart-item-row').contains('a', product.name).should('be.visible');
   }
 
   openWishlist() {

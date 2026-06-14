@@ -146,19 +146,19 @@ class CheckoutPage {
   }
 
   selectShippingMethod(methodName) {
-    cy.get('#checkout-shipping-method-load li').contains(methodName).within(() => {
-      cy.get("input[name='shippingoption']").click();
+    cy.contains('#checkout-shipping-method-load li', methodName).within(() => {
+      cy.get("input[name='shippingoption']").check();
     });
-    cy.get('#checkout-shipping-method-load li').contains(methodName).find("input[name='shippingoption']").should('be.checked');
+    cy.contains('#checkout-shipping-method-load li', methodName).find("input[name='shippingoption']").should('be.checked');
     this.shippingMethodContinueButton.click();
     this.paymentMethodContinueButton.should('be.visible');
   }
 
   selectPaymentMethod(methodName, expectsCreditCardInfo = methodName === 'Credit Card') {
-    cy.get('#checkout-payment-method-load li').contains(methodName).within(() => {
-      cy.get("input[name='paymentmethod']").click();
+    cy.contains('#checkout-payment-method-load li', methodName).within(() => {
+      cy.get("input[name='paymentmethod']").check();
     });
-    cy.get('#checkout-payment-method-load li').contains(methodName).find("input[name='paymentmethod']").should('be.checked');
+    cy.contains('#checkout-payment-method-load li', methodName).find("input[name='paymentmethod']").should('be.checked');
     this.paymentMethodContinueButton.click();
 
     if (expectsCreditCardInfo) {
